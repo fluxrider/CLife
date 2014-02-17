@@ -3,7 +3,6 @@ CLife
 
 Continuous Game of Life
 
-Screenshots:
 ![alt tag](https://raw.github.com/fluxrider/CLife/master/res/pattern.png)
 ![alt tag](https://raw.github.com/fluxrider/CLife/master/out/1392661771933.png)
 ![alt tag](https://raw.github.com/fluxrider/CLife/master/out/1392661779716.png)
