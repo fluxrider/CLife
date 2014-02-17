@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -24,6 +25,7 @@ public class Main extends JPanel {
 
 		// create widgets
 		JButton next = new JButton("Next Iteration");
+		JButton save = new JButton("Save");
 		this.view = new ZoomImage(first_generation);
 
 		// default states
@@ -33,6 +35,7 @@ public class Main extends JPanel {
 		// layout 
 		this.add(next, BorderLayout.SOUTH);
 		this.add(view, BorderLayout.CENTER);
+		this.add(save, BorderLayout.NORTH);
 
 		// events
 		next.addActionListener(new ActionListener() {
@@ -42,6 +45,17 @@ public class Main extends JPanel {
 				op.defaultSetup();
 				BufferedImage next = op.execute(view.getImage());
 				view.setImage(next, true);
+			}
+		});
+		save.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String filename = System.currentTimeMillis() + ".png";
+					ImageIO.write(view.getImage(), "png", new File(filename));
+				} catch (IOException exception) {
+					exception.printStackTrace();
+				}
 			}
 		});
 	}
